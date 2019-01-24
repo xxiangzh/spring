@@ -122,15 +122,14 @@ public class FileSystemXmlApplicationContext extends AbstractXmlApplicationConte
 	}
 
 	/**
-	 * Create a new FileSystemXmlApplicationContext with the given parent,
-	 * loading the definitions from the given XML files.
-	 * @param configLocations array of file paths
-	 * @param refresh whether to automatically refresh the context,
-	 * loading all bean definitions and creating all singletons.
-	 * Alternatively, call refresh manually after further configuring the context.
-	 * @param parent the parent context
-	 * @throws BeansException if context creation failed
-	 * @see #refresh()
+	 * 使用给定的父文件系统创建一个新的FileSystemXmlApplicationContext，
+	 * 从给定的XML文件加载定义
+	 * @param configLocations 文件路径的configLocations数组
+	 * @param refresh 是否自动刷新上下文
+	 * 加载所有bean定义并创建所有单例。
+	 * 或者，在进一步配置上下文之后手动调用refresh。
+	 * @param parent 父上下文
+	 * @throws BeansException 如果上下文创建失败
 	 */
 	public FileSystemXmlApplicationContext(
 			String[] configLocations, boolean refresh, @Nullable ApplicationContext parent)
