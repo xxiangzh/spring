@@ -185,18 +185,18 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
 		Assert.notNull(resources, "Resource array must not be null");
 		int count = 0;
 		for (Resource resource : resources) {
-			count += loadBeanDefinitions(resource);
+			count += loadBeanDefinitions(resource);//进入
 		}
 		return count;
 	}
 
 	@Override
 	public int loadBeanDefinitions(String location) throws BeanDefinitionStoreException {
-		return loadBeanDefinitions(location, null);
+		return loadBeanDefinitions(location, null);//进入
 	}
 
 	/**
-	 * Load bean definitions from the specified resource location.
+	 * 从指定的资源位置加载bean定义。
 	 * <p>The location can also be a location pattern, provided that the
 	 * ResourceLoader of this bean definition reader is a ResourcePatternResolver.
 	 * @param location the resource location, to be loaded with the ResourceLoader
@@ -211,6 +211,7 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
 	 * @see #loadBeanDefinitions(org.springframework.core.io.Resource[])
 	 */
 	public int loadBeanDefinitions(String location, @Nullable Set<Resource> actualResources) throws BeanDefinitionStoreException {
+		// 获取资源加载器
 		ResourceLoader resourceLoader = getResourceLoader();
 		if (resourceLoader == null) {
 			throw new BeanDefinitionStoreException(
@@ -221,7 +222,7 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
 			// Resource pattern matching available.
 			try {
 				Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location);
-				int count = loadBeanDefinitions(resources);
+				int count = loadBeanDefinitions(resources);//进入
 				if (actualResources != null) {
 					Collections.addAll(actualResources, resources);
 				}
@@ -253,8 +254,9 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
 	public int loadBeanDefinitions(String... locations) throws BeanDefinitionStoreException {
 		Assert.notNull(locations, "Location array must not be null");
 		int count = 0;
+		// 循环加载配置文件
 		for (String location : locations) {
-			count += loadBeanDefinitions(location);
+			count += loadBeanDefinitions(location);//进入
 		}
 		return count;
 	}
